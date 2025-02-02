@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work-Life Organizer</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            font-size: 26px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        /* Quote Section */
+        .quote {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #ff758c;
+            margin-bottom: 10px;
+        }
+
+        /* Task Planner */
+        .task-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .task-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .task-list li {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255, 117, 140, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .task-list input {
+            margin-right: 10px;
+        }
+
+        /* Scribbles Section */
+        .scribble-category {
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        /* Button */
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            background: #ff758c;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #ff5252;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>💖 Work-Life Organizer 💖</header>
+
+    <!-- Motivational Quotes -->
+    <div class="quote" id="quote">"Balance is not something you find, it's something you create." – Jana Kingsford</div>
+
+    <!-- Task Planner Section -->
+    <section>
+        <h2>📌 Task Planner</h2>
+        <input type="text" id="taskInput" class="task-input" placeholder="Add a task...">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList" class="task-list"></ul>
+    </section>
+
+    <!-- Scribbles Section -->
+    <section>
+        <h2>📝 Random Scribbles</h2>
+
+        <div class="scribble-category">
+            <h3>👗 Fashion Inspirations</h3>
+            <textarea id="fashion"></textarea>
+        </div>
+
+        <div class="scribble-category">
+            <h3>🍳 Favorite Recipes</h3>
+            <textarea id="recipes"></textarea>
+        </div>
+
+        <div class="scribble-category">
+            <h3>🛒 Grocery List</h3>
+            <textarea id="grocery"></textarea>
+        </div>
+
+        <div class="scribble-category">
+            <h3>🎒 Packing List</h3>
+            <textarea id="packing"></textarea>
+        </div>
+
+        <div class="scribble-category">
+            <h3>🎉 Birthday/Holiday Plans</h3>
+            <textarea id="plans"></textarea>
+        </div>
+
+        <button onclick="saveScribbles()">Save Notes</button>
+    </section>
+
+    <script>
+        // Task Planner Functionality
+        function addTask() {
+            let taskInput = document.getElementById("taskInput");
+            let taskList = document.getElementById("taskList");
+
+            if (taskInput.value.trim() !== "") {
+                let li = document.createElement("li");
+                li.innerHTML = `<input type="checkbox" onclick="removeTask(this)"> ${taskInput.value}`;
+                taskList.appendChild(li);
+                taskInput.value = "";
+            }
+        }
+
+        function removeTask(checkbox) {
+            if (checkbox.checked) {
+                checkbox.parentElement.remove();
+            }
+        }
+
+        // Save Scribbles Functionality
+        function saveScribbles() {
+            localStorage.setItem("fashion", document.getElementById("fashion").value);
+            localStorage.setItem("recipes", document.getElementById("recipes").value);
+            localStorage.setItem("grocery", document.getElementById("grocery").value);
+            localStorage.setItem("packing", document.getElementById("packing").value);
+            localStorage.setItem("plans", document.getElementById("plans").value);
+            alert("Notes saved!");
+        }
+
+        function loadScribbles() {
+            document.getElementById("fashion").value = localStorage.getItem("fashion") || "";
+            document.getElementById("recipes").value = localStorage.getItem("recipes") || "";
+            document.getElementById("grocery").value = localStorage.getItem("grocery") || "";
+            document.getElementById("packing").value = localStorage.getItem("packing") || "";
+            document.getElementById("plans").value = localStorage.getItem("plans") || "";
+        }
+
+        // Load scribbles on page load
+        window.onload = loadScribbles;
+    </script>
+
+</body>
+</html>
