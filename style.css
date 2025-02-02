@@ -1,31 +1,59 @@
-/* styles.css */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-body {
+/* Reset and Base Styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: 'Poppins', sans-serif;
     background-color: #283618;
     color: #fefae0;
 }
 
-.container {
+/* Header Styles */
+.header {
+    background-color: #283618;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #606c38;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: 600;
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-container i {
+    color: #dda15e;
+    font-size: 1.5rem;
+}
+
+.logo-container h1 {
+    color: #fefae0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+}
+
+/* Menu Styles */
+.menu-container {
+    position: relative;
 }
 
 .menu-icon {
-    font-size: 24px;
     cursor: pointer;
+    padding: 0.5rem;
     transition: transform 0.3s ease;
 }
 
@@ -33,71 +61,153 @@ body {
     transform: scale(1.1);
 }
 
-#dropdown-menu {
+.menu-icon i {
+    color: #dda15e;
+    font-size: 1.5rem;
+}
+
+.dropdown-menu {
     display: none;
     position: absolute;
-    top: 60px;
-    left: 20px;
-    background-color: #bc6c25;
-    padding: 10px;
-    border-radius: 5px;
+    top: 100%;
+    right: 0;
+    background-color: #283618;
+    border: 2px solid #606c38;
+    border-radius: 8px;
+    padding: 1rem;
+    min-width: 200px;
 }
 
-#dropdown-menu.show {
+.dropdown-menu.show {
     display: block;
+    animation: fadeIn 0.3s ease;
 }
 
-#dropdown-menu ul {
+.dropdown-menu ul {
     list-style: none;
-    padding: 0;
 }
 
-#dropdown-menu ul li {
-    padding: 10px;
+.dropdown-menu li {
+    margin: 0.5rem 0;
 }
 
-#dropdown-menu ul li a {
-    text-decoration: none;
+.dropdown-menu a {
     color: #fefae0;
-    font-weight: 400;
-}
-
-.hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 50px 20px;
-    background-color: #606c38;
-}
-
-.hero-content h1 {
-    font-size: 36px;
-    font-weight: 600;
-}
-
-.hero-content p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.btn {
-    background-color: #dda15e;
-    color: #283618;
-    padding: 10px 20px;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 0.5rem 1rem;
 }
 
-.btn:hover {
+.dropdown-menu a:hover {
+    color: #dda15e;
+    background-color: rgba(96, 108, 56, 0.3);
+    border-radius: 4px;
+}
+
+/* Hero Section Styles */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    z-index: 1;
+}
+
+.hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: #fefae0;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: #dda15e;
+}
+
+.cta-button {
     background-color: #bc6c25;
+    color: #fefae0;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #dda15e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(221, 161, 94, 0.3);
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 .hero-image img {
     width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-    margin-top: 20px;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .dropdown-menu {
+        width: 100vw;
+        right: -2rem;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
 }
