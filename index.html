@@ -11,55 +11,47 @@
 <body>
     <!-- Header Section -->
     <header class="header">
-        <div class="header-container">
-            <div class="logo-container">
+        <nav class="nav-container">
+            <div class="logo">
                 <i class="fas fa-tasks-alt"></i>
-                <h1>FemmePlan</h1>
+                <span>FemmePlan</span>
             </div>
-            <div class="menu-container">
-                <div class="menu-icon" id="menuIcon">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <nav class="dropdown-menu" id="dropdownMenu">
-                    <ul>
-                        <li><a href="#organize">Organize</a></li>
-                        <li><a href="#habits">Habits and Goals</a></li>
-                        <li><a href="#focus">Focus</a></li>
-                        <li><a href="#about">About</a></li>
-                    </ul>
-                </nav>
+            
+            <ul class="nav-links">
+                <li><a href="#organize">Organize</a></li>
+                <li><a href="#goals">Goals</a></li>
+                <li><a href="#focus">Focus</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+
+            <button class="nav-cta">Get Started</button>
+            
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
             </div>
-        </div>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h2>Effortlessly Manage<br>Life's Projects</h2>
-            <p>Organize Tasks, Habits & Goals to<br>Clear Your Mind & Focus Your Time</p>
+            <h1>Master Your Day,<br>Balance Your Life</h1>
+            <p>Empowering women to seamlessly manage work, studies, and personal goals with intuitive task organization</p>
             <button class="cta-button">Get Started</button>
         </div>
         <div class="hero-image">
-            <img src="https://i.ibb.co/5hNpscMM/hero-pic1-web.jpg" alt="Hero Image">
+            <img src="https://i.ibb.co/5hNpscMM/hero-pic1-web.jpg" alt="Work Life Balance">
         </div>
     </section>
 
     <script>
-        document.getElementById('menuIcon').addEventListener('click', function() {
-            document.getElementById('dropdownMenu').classList.toggle('show');
+        // Mobile menu functionality
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
-
-        window.onclick = function(event) {
-            if (!event.target.matches('.menu-icon') && !event.target.matches('.fa-bars')) {
-                var dropdowns = document.getElementsByClassName('dropdown-menu');
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
     </script>
 </body>
 </html>
