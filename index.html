@@ -3,54 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FemmePlan - Work-Life Organizer</title>
+    <title>FemmePlan - Work-Life Balance Made Simple</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header Section -->
-    <header class="header">
-        <nav class="nav-container">
+    <div class="top-notification">
+        <p>Real stories, real achievements: See how women are transforming their lives with FemmePlan. 💪 Start your journey today.</p>
+        <button class="close-notification">&times;</button>
+    </div>
+
+    <header>
+        <div class="header-container">
             <div class="logo">
-                <i class="fas fa-tasks-alt"></i>
+                <i class="fas fa-check-circle"></i>
                 <span>FemmePlan</span>
             </div>
-            
-            <ul class="nav-links">
-                <li><a href="#organize">Organize</a></li>
-                <li><a href="#goals">Goals</a></li>
-                <li><a href="#focus">Focus</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
 
-            <button class="nav-cta">Get Started</button>
-            
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
+            <nav class="main-nav">
+                <a href="#organize">Organize</a>
+                <a href="#goals">Goals</a>
+                <a href="#focus">Focus</a>
+                <a href="#about">About</a>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="#login" class="login-btn">Log in</a>
+                <a href="#signup" class="signup-btn">Get Started</a>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <main class="hero-section">
         <div class="hero-content">
             <h1>Master Your Day,<br>Balance Your Life</h1>
             <p>Empowering women to seamlessly manage work, studies, and personal goals with intuitive task organization</p>
             <button class="cta-button">Get Started</button>
+            <div class="rating">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>374K+ reviews from <i class="fab fa-apple"></i> <i class="fab fa-android"></i></p>
+            </div>
         </div>
         <div class="hero-image">
-            <img src="https://i.ibb.co/5hNpscMM/hero-pic1-web.jpg" alt="Work Life Balance">
+            <img src="https://i.ibb.co/5hNpscMM/hero-pic1-web.jpg" alt="FemmePlan App Interface">
         </div>
-    </section>
+    </main>
 
     <script>
-        // Mobile menu functionality
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        document.querySelector('.close-notification').addEventListener('click', function() {
+            document.querySelector('.top-notification').style.display = 'none';
         });
     </script>
 </body>
