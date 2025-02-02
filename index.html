@@ -3,33 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy Monica!</title>
+    <title>FemmePlan - Work-Life Organizer</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">Easy Monica!</div>
-            <div class="menu-icon" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-container">
+                <i class="fas fa-tasks-alt"></i>
+                <h1>FemmePlan</h1>
+            </div>
+            <div class="menu-container">
+                <div class="menu-icon" id="menuIcon">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav class="dropdown-menu" id="dropdownMenu">
+                    <ul>
+                        <li><a href="#organize">Organize</a></li>
+                        <li><a href="#habits">Habits and Goals</a></li>
+                        <li><a href="#focus">Focus</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
-        <nav id="dropdown-menu">
-            <ul>
-                <li><a href="#organize">Organize</a></li>
-                <li><a href="#habits-goals">Habits and Goals</a></li>
-                <li><a href="#focus">Focus</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
     </header>
-    
+
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Effortlessly Manage Life’s Projects</h1>
-            <p>Organize Tasks, Habits & Goals to Clear Your Mind & Focus Your Time</p>
-            <a href="signup.html" class="btn">Get Started</a>
+            <h2>Effortlessly Manage<br>Life's Projects</h2>
+            <p>Organize Tasks, Habits & Goals to<br>Clear Your Mind & Focus Your Time</p>
+            <button class="cta-button">Get Started</button>
         </div>
         <div class="hero-image">
             <img src="https://i.ibb.co/5hNpscMM/hero-pic1-web.jpg" alt="Hero Image">
@@ -37,8 +45,20 @@
     </section>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('dropdown-menu').classList.toggle('show');
+        document.getElementById('menuIcon').addEventListener('click', function() {
+            document.getElementById('dropdownMenu').classList.toggle('show');
+        });
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.menu-icon') && !event.target.matches('.fa-bars')) {
+                var dropdowns = document.getElementsByClassName('dropdown-menu');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
         }
     </script>
 </body>
